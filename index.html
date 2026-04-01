@@ -6,7 +6,7 @@
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 html,body{
-  width:940px;height:160px;
+  width:940px;
   overflow:hidden;
   font-family:Arial,Helvetica,sans-serif;
   background:transparent;
@@ -158,20 +158,19 @@ html,body{
 
 /* ── CTA ── */
 .cta-wrap{
-  width:185px;flex-shrink:0;
-  padding:0 16px 0 10px;
+  width:155px;flex-shrink:0;
+  padding:0 12px 0 8px;
   border-left:1px solid rgba(128,0,0,0.1);
   display:flex;flex-direction:column;
-  align-items:flex-end;justify-content:center;gap:8px;
+  align-items:flex-end;justify-content:center;
 }
 .cta-btn{
   display:inline-block;background:#800000;color:#fff;
-  font-size:15px;font-weight:bold;text-decoration:none;font-family:sans-serif;
-  padding:10px 22px;border-radius:4px;white-space:nowrap;
+  font-size:12px;font-weight:bold;text-decoration:none;font-family:sans-serif;
+  padding:8px 14px;border-radius:4px;white-space:nowrap;
   border:1px solid #600000;transition:background 0.2s;
 }
 .cta-btn:hover{background:#a30000}
-.cta-sub{font-size:9.5px;color:#999;text-align:right;line-height:1.5}
 
 /* ── EXPAND PANEL ── */
 #banner-wrap{
@@ -230,13 +229,13 @@ html,body{
 
       <div class="banner-footer">
         <span class="footer-left">
-          <a class="footer-q" href="javascript:void(0)"
-             onclick="window.open('https://www.nederlanders.fr/Infofrankrijk-instrumenten','ifr_pres','width=1100,height=700,scrollbars=yes,resizable=yes')">?</a>
+          <a class="footer-meer" href="javascript:void(0)"
+             onclick="window.open('https://www.nederlanders.fr/Infofrankrijk-instrumenten','ifr_pres','width=1100,height=700,scrollbars=yes,resizable=yes')">Lees meer…</a>
         </span>
         <span class="footer-mid">Nederlanders.fr &nbsp;·&nbsp; Infofrankrijk &nbsp;·&nbsp; Sinds 2001</span>
         <span class="footer-right">
-          <a class="footer-meer" href="javascript:void(0)"
-             onclick="window.open('https://www.nederlanders.fr/Infofrankrijk-instrumenten','ifr_pres','width=1100,height=700,scrollbars=yes,resizable=yes')">Lees meer…</a>
+          <a class="footer-q" href="javascript:void(0)"
+             onclick="window.open('https://www.nederlanders.fr/Infofrankrijk-instrumenten','ifr_pres','width=1100,height=700,scrollbars=yes,resizable=yes')">?</a>
         </span>
       </div>
 
@@ -368,11 +367,15 @@ function openPanel(key){
   const lnk = document.getElementById('panel-link');
   lnk.href = d.url; lnk.textContent = d.lbl;
   wrap.classList.add('expanded');
+  wrap.style.overflow = 'visible';
+  document.body.style.height = '302px';
   try{window.parent.postMessage({iframeHeight:302},'*')}catch(e){}
 }
 
 function closePanel(){
   wrap.classList.remove('expanded');
+  wrap.style.overflow = 'hidden';
+  document.body.style.height = '160px';
   try{window.parent.postMessage({iframeHeight:162},'*')}catch(e){}
 }
 
