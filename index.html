@@ -6,7 +6,7 @@
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 html,body{
-  width:940px;
+  width:100%;
   overflow:hidden;
   font-family:Arial,Helvetica,sans-serif;
   background:transparent;
@@ -14,9 +14,13 @@ html,body{
 
 /* ── BANNER SHELL ── */
 .banner{
-  width:940px;height:160px;
-  background:rgba(128,0,0,0.05);border:1px solid rgba(128,0,0,0.1);border-radius:8px;
+  width:100%;max-width:970px;
+  height:160px;
+  background:rgba(128,0,0,0.05);
+  border:1px solid rgba(128,0,0,0.1);
+  border-radius:6px;
   display:flex;align-items:stretch;overflow:hidden;
+  margin:0 auto;
   position:relative;
 }
 
@@ -31,7 +35,6 @@ html,body{
 .banner-header{
   height:34px;flex-shrink:0;
   display:flex;align-items:center;justify-content:center;
-  border-bottom:1px solid rgba(128,0,0,0.1);
   padding:0 20px;
 }
 .banner-header span{
@@ -54,7 +57,6 @@ html,body{
 .banner-footer{
   height:26px;flex-shrink:0;
   display:flex;align-items:center;justify-content:space-between;
-  border-top:1px solid rgba(128,0,0,0.1);
   padding:0 10px 0 8px;
 }
 .footer-left,.footer-right{flex-shrink:0}
@@ -160,7 +162,6 @@ html,body{
 .cta-wrap{
   width:155px;flex-shrink:0;
   padding:0 12px 0 8px;
-  border-left:1px solid rgba(128,0,0,0.1);
   display:flex;flex-direction:column;
   align-items:flex-end;justify-content:center;
 }
@@ -174,9 +175,9 @@ html,body{
 
 /* ── EXPAND PANEL ── */
 #banner-wrap{
-  width:940px;height:160px;overflow:hidden;
+  width:100%;max-width:970px;height:160px;overflow:hidden;
   transition:height 0.35s cubic-bezier(0.4,0,0.2,1);
-  border:1px solid #e4d8d8;border-radius:8px;
+  margin:0 auto;
 }
 #banner-wrap.expanded{height:300px}
 
@@ -233,10 +234,7 @@ html,body{
              onclick="window.open('https://www.nederlanders.fr/Infofrankrijk-instrumenten','ifr_pres','width=1100,height=700,scrollbars=yes,resizable=yes')">Lees meer…</a>
         </span>
         <span class="footer-mid">Nederlanders.fr &nbsp;·&nbsp; Infofrankrijk &nbsp;·&nbsp; Sinds 2001</span>
-        <span class="footer-right">
-          <a class="footer-q" href="javascript:void(0)"
-             onclick="window.open('https://www.nederlanders.fr/Infofrankrijk-instrumenten','ifr_pres','width=1100,height=700,scrollbars=yes,resizable=yes')">?</a>
-        </span>
+        <span class="footer-right"></span>
       </div>
 
     </div>
