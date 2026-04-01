@@ -15,31 +15,31 @@ html,body{
 /* ── BANNER SHELL ── */
 .banner{
   width:100%;max-width:970px;
-  height:160px;
+  height:130px;
   background:rgba(128,0,0,0.05);
   border:1px solid rgba(128,0,0,0.1);
   border-radius:6px;
-  display:flex;align-items:stretch;overflow:hidden;
+  display:flex;flex-direction:column;
   margin:0 auto;
   position:relative;
-}
-
-/* ── MAIN LEFT (header + conveyor + footer) ── */
-.main{
-  flex:1;
-  display:flex;flex-direction:column;
   overflow:hidden;
 }
 
-/* ── HEADER ── */
+/* ── HEADER — full width centered ── */
 .banner-header{
-  height:34px;flex-shrink:0;
+  height:28px;flex-shrink:0;
   display:flex;align-items:center;justify-content:center;
+  width:100%;
   padding:0 20px;
 }
 .banner-header span{
-  font-size:13px;font-weight:700;color:#800000;
+  font-size:15px;font-weight:700;color:#800000;
   letter-spacing:0.01em;
+}
+
+/* ── BODY ROW: conveyor + CTA ── */
+.banner-body{
+  flex:1;display:flex;align-items:stretch;overflow:hidden;
 }
 
 /* ── CONVEYOR STAGE ── */
@@ -53,11 +53,20 @@ html,body{
 .stage::before{left:0;background:linear-gradient(90deg,rgba(255,248,248,0.95),transparent)}
 .stage::after{right:0;background:linear-gradient(270deg,rgba(255,248,248,0.95),transparent)}
 
-/* ── FOOTER ── */
+/* ── FOOTER — full width centered ── */
 .banner-footer{
-  height:26px;flex-shrink:0;
+  height:22px;flex-shrink:0;
   display:flex;align-items:center;justify-content:space-between;
-  padding:0 10px 0 8px;
+  padding:0 10px 0 10px;
+  width:100%;
+}
+.footer-left,.footer-right{flex-shrink:0}
+.footer-mid{
+  position:absolute;left:0;right:0;
+  text-align:center;
+  font-size:9px;color:rgba(128,0,0,0.45);
+  letter-spacing:0.08em;text-transform:uppercase;
+  pointer-events:none;
 }
 .footer-left,.footer-right{flex-shrink:0}
 .footer-mid{
@@ -175,11 +184,11 @@ html,body{
 
 /* ── EXPAND PANEL ── */
 #banner-wrap{
-  width:100%;max-width:970px;height:160px;overflow:hidden;
+  width:100%;max-width:970px;height:130px;overflow:hidden;
   transition:height 0.35s cubic-bezier(0.4,0,0.2,1);
   margin:0 auto;
 }
-#banner-wrap.expanded{height:300px}
+#banner-wrap.expanded{height:270px}
 
 .expand-panel{
   width:100%;height:140px;
@@ -217,15 +226,19 @@ html,body{
 <div id="banner-wrap">
   <div class="banner">
 
-    <!-- MAIN: header + conveyor + footer -->
-    <div class="main">
-
       <div class="banner-header">
         <span>Wonen en Leven in Frankrijk</span>
       </div>
 
-      <div class="stage">
-        <div class="track" id="track"></div>
+      <div class="banner-body">
+        <div class="stage">
+          <div class="track" id="track"></div>
+        </div>
+
+        <!-- CTA -->
+        <div class="cta-wrap">
+          <a class="cta-btn" href="https://infofrankrijk.com/abonnement/" target="_blank">Word abonnee →</a>
+        </div>
       </div>
 
       <div class="banner-footer">
@@ -233,16 +246,9 @@ html,body{
           <a class="footer-meer" href="javascript:void(0)"
              onclick="window.open('https://www.nederlanders.fr/Infofrankrijk-instrumenten','ifr_pres','width=1100,height=700,scrollbars=yes,resizable=yes')">Lees meer…</a>
         </span>
-        <span class="footer-mid">Nederlanders.fr &nbsp;·&nbsp; Infofrankrijk &nbsp;·&nbsp; Sinds 2001</span>
+        <span class="footer-mid">Nederlanders.fr &nbsp;·&nbsp; Infofrankrijk.com &nbsp;·&nbsp; Sinds 2001</span>
         <span class="footer-right"></span>
       </div>
-
-    </div>
-
-    <!-- CTA -->
-    <div class="cta-wrap">
-      <a class="cta-btn" href="https://infofrankrijk.com/abonnement/" target="_blank">Word abonnee →</a>
-    </div>
 
   </div>
 
@@ -366,15 +372,15 @@ function openPanel(key){
   lnk.href = d.url; lnk.textContent = d.lbl;
   wrap.classList.add('expanded');
   wrap.style.overflow = 'visible';
-  document.body.style.height = '302px';
-  try{window.parent.postMessage({iframeHeight:302},'*')}catch(e){}
+  document.body.style.height = '272px';
+  try{window.parent.postMessage({iframeHeight:272},'*')}catch(e){}
 }
 
 function closePanel(){
   wrap.classList.remove('expanded');
   wrap.style.overflow = 'hidden';
-  document.body.style.height = '160px';
-  try{window.parent.postMessage({iframeHeight:162},'*')}catch(e){}
+  document.body.style.height = '130px';
+  try{window.parent.postMessage({iframeHeight:132},'*')}catch(e){}
 }
 
 document.getElementById('track').addEventListener('click',e=>{
